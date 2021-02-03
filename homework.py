@@ -80,4 +80,3 @@ class CaloriesCalculator(Calculator):
                 f' но с общей калорийностью не более {remained_calories} кКал'
         elif remained_calories <= 0:
             return 'Хватит есть!'
-            
