@@ -9,7 +9,7 @@ class Record:
             this_date = dt.datetime.now().date()
             self.date = this_date
         else:
-            self.date = dt.datetime.strptime(date, '%d.%m.%y').date()
+            self.date = dt.datetime.strptime(date, '%d.%m.%Y').date()
 
 
 class Calculator:
@@ -65,10 +65,10 @@ class CashCalculator(Calculator):
 
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
-        today_calories = self.get_week_stats()
-        remained_calories = self.limit - today_calories
+        remained_calories = self.limit - self.get_today_stats()
         if remained_calories > 0:
-            return 'Сегодня можно съесть что-нибудь ещё,' \
-                f' но с общей калорийностью не более {remained_calories} кКал'
-        elif remained_calories <= 0:
+            return ('Сегодня можно съесть что-нибудь ещё, '
+                    f'но с общей калорийностью не более {remained_calories} '
+                    'кКал')
+        else:
             return 'Хватит есть!'
